@@ -14,7 +14,7 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack {
                 
-                Image("timi2")
+                Image("img1")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 190, height: 190)
@@ -23,7 +23,7 @@ struct ContentView: View {
                         Circle().stroke(Color.white, lineWidth: 5)
                         )
                 
-                Text("Timea Bartha")
+                Text("Hangry Meow")
                     .font(Font.custom("Satisfy-Regular", size: 40))
                     .bold()
                     .foregroundColor(.white)
@@ -31,7 +31,7 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .font(.system(size: 25))
                 Divider()
-                InfoView(text: "timea.bartha.93@gmail.com", ImageName: "envelope.badge")
+                InfoView(text: "thisIsATest@gmail.com", ImageName: "envelope.badge")
                     .foregroundColor(.black)
             }
         }
