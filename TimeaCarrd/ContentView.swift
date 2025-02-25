@@ -8,32 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = ContentViewModel()
+    @State private var currentImage = "img1" // Track the displayed image
     var body: some View {
         ZStack {
-            Color.lightTeal.brightness(-0.4)
+            viewModel.themeColor.brightness(-0.4)
                 .ignoresSafeArea()
             VStack {
                 
-                Image("img1")
+                Image(currentImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 190, height: 190)
                     .clipShape(Circle())
                     .overlay(
                         Circle().stroke(Color.white, lineWidth: 5)
-                        )
+                    )
                 
                 Text("Hangry Meow")
                     .font(Font.custom("Satisfy-Regular", size: 40))
                     .bold()
                     .foregroundColor(.white)
                 Text("Cute Meow that wants to be an iOS dev.")
-                    .foregroundColor(Color.lightTeal)
+                    .foregroundColor(viewModel.themeColor)
                     .font(Font.custom("Satisfy-Regular", size: 20))
                 Divider()
-                InfoView(text: "meowtastic@gmail.com", ImageName: "envelope.badge")
+                InfoView(themeColor: viewModel.themeColor, text: "meowtastic@gmail.com", ImageName: "envelope.badge")
                     .foregroundColor(.white)
-
+                Button {
+                    viewModel.toggleColor()
+                } label:{
+                    Text("Change My Colors")
+                        .bold()
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(viewModel.themeColor.opacity(0.6))
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                }
+                .padding()
             }
         }
     }
@@ -46,12 +59,13 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct InfoView: View {
+    let themeColor: Color
     let text: String
     let ImageName: String
     
     var body: some View {
         RoundedRectangle(cornerRadius: 25)
-            .fill(Color.lightTeal.opacity(0.6))
+            .fill(themeColor.opacity(0.6))
             .frame(height: 50)
             .overlay(HStack {
                 Image(systemName: ImageName)
