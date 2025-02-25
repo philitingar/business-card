@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
     @State private var currentImage = "img1" // Track the displayed image
+    let moodImages = ["img1", "img2", "img3", "img4", "img5"]
+    
     var body: some View {
         ZStack {
             viewModel.themeColor.brightness(-0.4)
@@ -47,6 +49,20 @@ struct ContentView: View {
                         .cornerRadius(25)
                 }
                 .padding()
+                
+                Text("Here are my moods:")
+                    .foregroundColor(.white)
+
+                HStack {
+                    ForEach(moodImages, id: \.self) { imageName in
+                        Image(imageName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                    }
+                }
+
             }
         }
     }
