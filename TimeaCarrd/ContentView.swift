@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
     @State private var currentImage = "img1" // Track the displayed image
+
     var body: some View {
         ZStack {
             viewModel.themeColor.brightness(-0.4)
@@ -17,6 +18,7 @@ struct ContentView: View {
             VStack {
                 
                 Image(currentImage)
+                Image(imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 190, height: 190)
@@ -35,6 +37,7 @@ struct ContentView: View {
                 Divider()
                 InfoView(themeColor: viewModel.themeColor, text: "meowtastic@gmail.com", ImageName: "envelope.badge")
                     .foregroundColor(.white)
+
                 Button {
                     viewModel.toggleColor()
                 } label:{
@@ -47,6 +50,17 @@ struct ContentView: View {
                         .cornerRadius(25)
                 }
                 .padding()
+                
+                Button {
+                    if imageName == "img1" {
+                        imageName = "img2"
+                    } else {
+                        imageName = "img1"
+                    }
+                } label: {
+                    Text("Change my avatar")
+                }
+
             }
         }
     }
