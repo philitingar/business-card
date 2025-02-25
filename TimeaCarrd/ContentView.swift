@@ -19,6 +19,7 @@ struct ContentView: View {
             VStack {
                 
                 Image(currentImage)
+                Image(imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 190, height: 190)
@@ -37,6 +38,7 @@ struct ContentView: View {
                 Divider()
                 InfoView(themeColor: viewModel.themeColor, text: "meowtastic@gmail.com", ImageName: "envelope.badge")
                     .foregroundColor(.white)
+
                 Button {
                     viewModel.toggleColor()
                 } label:{
@@ -50,7 +52,16 @@ struct ContentView: View {
                 }
                 .padding()
                 
-                Text("Here are my moods:")
+                Button {
+                    if imageName == "img1" {
+                        imageName = "img2"
+                    } else {
+                        imageName = "img1"
+                    }
+                } label: {
+                    Text("Change my avatar")
+
+                  Text("Here are my moods:")
                     .foregroundColor(.white)
 
                 HStack {
@@ -61,6 +72,7 @@ struct ContentView: View {
                             .frame(width: 50, height: 50)
                             .clipShape(Circle())
                     }
+
                 }
 
             }
