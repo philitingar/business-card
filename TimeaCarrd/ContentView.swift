@@ -10,13 +10,13 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Color(red: 0.09, green: 0.63, blue: 0.52, opacity: 1.00)
+            Color.lightTeal.brightness(-0.4)
                 .ignoresSafeArea()
             VStack {
                 
                 Image("img1")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: 190, height: 190)
                     .clipShape(Circle())
                     .overlay(
@@ -27,12 +27,13 @@ struct ContentView: View {
                     .font(Font.custom("Satisfy-Regular", size: 40))
                     .bold()
                     .foregroundColor(.white)
-                Text("iOS Developer")
-                    .foregroundColor(.white)
-                    .font(.system(size: 25))
+                Text("Cute Meow that wants to be an iOS dev.")
+                    .foregroundColor(Color.lightTeal)
+                    .font(Font.custom("Satisfy-Regular", size: 20))
                 Divider()
-                InfoView(text: "thisIsATest@gmail.com", ImageName: "envelope.badge")
-                    .foregroundColor(.black)
+                InfoView(text: "meowtastic@gmail.com", ImageName: "envelope.badge")
+                    .foregroundColor(.white)
+
             }
         }
     }
@@ -50,11 +51,11 @@ struct InfoView: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 25)
-            .fill(Color.white)
+            .fill(Color.lightTeal.opacity(0.6))
             .frame(height: 50)
             .overlay(HStack {
                 Image(systemName: ImageName)
-                    .foregroundColor(.green)
+                    .foregroundColor(.white)
                 Text(text).bold()
             })
             .padding()
