@@ -27,6 +27,7 @@ struct ContentView: View {
                         Circle().stroke(Color.white, lineWidth: 5)
                     )
                 
+
                 Text("Cute Meow")
                     .font(Font.custom("Satisfy-Regular", size: 45))
                     .bold()
@@ -37,6 +38,7 @@ struct ContentView: View {
                 Divider()
                 InfoView(themeColor: viewModel.themeColor, text: "meowtastic@gmail.com", ImageName: "envelope.badge")
                     .foregroundColor(.white)
+
                 Button("Change Profile Picture") {
                     if let currentIndex = moodImages.firstIndex(of: currentImage) {
                         let nextIndex = (currentIndex + 1) % moodImages.count
@@ -47,6 +49,18 @@ struct ContentView: View {
                 .background(Color.white.opacity(0.8))
                 .foregroundColor(viewModel.themeColor)
                 .cornerRadius(10)
+                Button {
+                    viewModel.toggleColor()
+                } label:{
+                    Text("Change My Colors")
+                        .bold()
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(viewModel.themeColor.opacity(0.6))
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                }
+                .padding()
             }
         }
     }
