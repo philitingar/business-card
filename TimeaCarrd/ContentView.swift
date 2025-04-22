@@ -27,8 +27,8 @@ struct ContentView: View {
                         Circle().stroke(Color.white, lineWidth: 5)
                     )
                 
-                Text("Hangry Meow")
-                    .font(Font.custom("Satisfy-Regular", size: 40))
+                Text("Hangry Mangry Meow")
+                    .font(Font.custom("Satisfy-Regular", size: 30))
                     .bold()
                     .foregroundColor(.white)
                 Text("Cute Meow that wants to be an iOS dev.")
@@ -37,6 +37,18 @@ struct ContentView: View {
                 Divider()
                 InfoView(themeColor: viewModel.themeColor, text: "meowtastic@gmail.com", ImageName: "envelope.badge")
                     .foregroundColor(.white)
+                Button {
+                    viewModel.toggleColor()
+                } label:{
+                    Text("Change My Colors")
+                        .bold()
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(viewModel.themeColor.opacity(0.6))
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                }
+                .padding()
             }
         }
     }
