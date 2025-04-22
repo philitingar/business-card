@@ -27,16 +27,26 @@ struct ContentView: View {
                         Circle().stroke(Color.white, lineWidth: 5)
                     )
                 
-                Text("Hangry Meow")
-                    .font(Font.custom("Satisfy-Regular", size: 40))
+                Text("Cute Meow")
+                    .font(Font.custom("Satisfy-Regular", size: 45))
                     .bold()
                     .foregroundColor(.white)
-                Text("Cute Meow that wants to be an iOS dev.")
+                Text("A curious cat exploring iOS development.")
                     .foregroundColor(viewModel.themeColor)
                     .font(Font.custom("Satisfy-Regular", size: 20))
                 Divider()
                 InfoView(themeColor: viewModel.themeColor, text: "meowtastic@gmail.com", ImageName: "envelope.badge")
                     .foregroundColor(.white)
+                Button("Change Profile Picture") {
+                    if let currentIndex = moodImages.firstIndex(of: currentImage) {
+                        let nextIndex = (currentIndex + 1) % moodImages.count
+                        currentImage = moodImages[nextIndex]
+                    }
+                }
+                .padding()
+                .background(Color.white.opacity(0.8))
+                .foregroundColor(viewModel.themeColor)
+                .cornerRadius(10)
             }
         }
     }
